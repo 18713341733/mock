@@ -7,7 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class YamlUtil {
-    // 这个工具的作用就是，读取返回值的文件，然后转换成一个对象
+    // 这个工具的作用就是，读取yaml文件，将yaml文件里的内容转成一个实体类
+    // 穿参path，yam文件的路径
+    // 穿参Class<T> cls，要被转成的实体类
     public static <T> T readForObject(String path,Class<T> cls){
         try {
             Yaml yaml = new Yaml();
@@ -21,7 +23,7 @@ public class YamlUtil {
     }
 
     public static void main(String[] args) {
-        MockDataInfo mockDataInfo = readForObject("/Users/zhaohui/IdeaProjects/mock-server/src/main/resources/mock_data/get_user/aaa", MockDataInfo.class);
+        MockDataInfo mockDataInfo = readForObject("/Users/zhaohui/IdeaProjects/mock-server/src/main/resources/mock_data/get_user/a", MockDataInfo.class);
         System.out.println("mockDataInfo = " + mockDataInfo);
     }
 }

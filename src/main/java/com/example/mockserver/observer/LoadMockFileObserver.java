@@ -17,6 +17,7 @@ public class LoadMockFileObserver implements IObserver<MockContext>{
     public void update(MockContext mockContext) {
         // 根据请求的目录，获取目录下所有的文件
         File[] files = new File(mockContext.getFilePath()).listFiles();
+        // 把文件夹里每一个文件转换成对应的实体类，以list返回
         List<MockDataInfo> mockDataInfoList = Arrays.stream(files)
                 // 转换，把每一个文件转成对象MockDataInfo
                 .map(f -> YamlUtil.readForObject(f.getAbsolutePath(), MockDataInfo.class))

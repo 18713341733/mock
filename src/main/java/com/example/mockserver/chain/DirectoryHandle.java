@@ -13,6 +13,7 @@ public class DirectoryHandle extends AbstractHandler<MockContext,String> {
 
     @Override
     protected String onHandle(MockContext mockContext) throws Exception {
+        // 是目录，则调用责任链，处理。
         return ObserverManager.of().getMockData(mockContext);
     }
 }

@@ -1,26 +1,18 @@
 package com.example.mockserver.controller;
 
-import cn.hutool.core.io.FileUtil;
-import com.example.mockserver.model.MappingParamsEntity;
 import com.example.mockserver.model.MockContext;
-import com.example.mockserver.model.MockDataInfo;
 import com.example.mockserver.service.MockService;
 import com.example.mockserver.util.ArrayUtil;
-import com.example.mockserver.util.YamlUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@RestController
+//@RestController
 @Slf4j
 public class MockController {
 
@@ -32,9 +24,14 @@ public class MockController {
     @Autowired
     private MockService mockService;
 
+
+
     @RequestMapping("/**")
     public String doMock() throws IOException {
-        log.info("---------:"+request.getRequestURI());
+        log.info("请求的URI---------:"+request.getRequestURI());
+        log.info("请求IP---------:"+request.getRemoteAddr());
+        log.info("请求的参数---------:"+request.getParameterMap());
+
 
         // 将获取的用户数据 ip 参数 URI ，存储到 mockContext 这个类里
         MockContext mockContext = MockContext.builder()

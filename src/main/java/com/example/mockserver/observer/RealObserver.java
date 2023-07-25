@@ -1,8 +1,11 @@
 package com.example.mockserver.observer;
 
+import cn.hutool.http.HttpResponse;
+import cn.hutool.http.HttpUtil;
 import com.example.mockserver.model.MockContext;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 建设点：透传请求
@@ -27,8 +30,16 @@ public class RealObserver implements IObserver<MockContext>{
 
         // url
         String realUrl = mockContext.getRealUrl();
-        // 请求参数
+        // 获取请求参数
         Map<String, String> requestParams = mockContext.getRequestParams();
+        // 构建请求
+        Map<String,Object> collect = requestParams.entrySet().stream().collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
+        HttpResponse httpResponse = HttpUtil.createPost(realUrl)
+                .form(collect)
+                .execute();
+        // 将得到的真实response 进行回写mockContext
+        String realResponse = httpResponse.body();
+        mockContext.setFinalResponse(realResponse);
 
     }
 

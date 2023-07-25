@@ -31,6 +31,6 @@ public abstract class AbstractHandler<T,R> {
             return nextHandler.doHandle(t);
         }
         // 所有链条都不能处理，抛出异常
-        throw new RuntimeException("no chain");
+        throw new RuntimeException("责任链中，所有链条都不能处理");
     }
 }

@@ -3,9 +3,7 @@ package com.example.mockserver.observer;
 import com.example.mockserver.model.MappingParamsEntity;
 import com.example.mockserver.model.MockContext;
 import com.example.mockserver.model.MockDataInfo;
-import com.example.mockserver.util.YamlUtil;
 
-import java.io.File;
 import java.util.List;
 
 /**
