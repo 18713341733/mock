@@ -2,6 +2,7 @@ package com.example.mockserver.entity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @Data
 @NoArgsConstructor
+@Builder
 public class MockOnlyResponse {
     private String response_content;
     private String params;

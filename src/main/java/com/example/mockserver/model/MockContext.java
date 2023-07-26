@@ -17,6 +17,7 @@ public class MockContext {
     private String requestURI;
     private Map<String,String> requestParams;
     private String requestIp;
+    private String requestMethod;
 
     // 返回结果的List
     // 一个接口，对应的返回结果，是一个List
